@@ -25,7 +25,7 @@ So, I decided it was time to dive into something new and exciting. I wanted a cl
 5. **A Learning Journey 🧠**
    - If you’re like me, you love to tinker and learn. This migration isn’t just about better prints—it’s about deepening your understanding of the software that drives your machine. Embrace the challenge and grow your skills!
 
-![Marlin_To_Klipper](https://github.com/MushuDG/ATMegaSpin/blob/main/Pictures/Readme/Marlin_To_Klipper.png)
+![Marlin_To_Klipper](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Pictures/Readme/Marlin_To_Klipper.png)
 
 ## Ready to Dive In? 💻
 
