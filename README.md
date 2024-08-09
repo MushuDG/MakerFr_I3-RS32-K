@@ -25,6 +25,8 @@ So, I decided it was time to dive into something new and exciting. I wanted a cl
 5. **A Learning Journey 🧠**
    - If you’re like me, you love to tinker and learn. This migration isn’t just about better prints—it’s about deepening your understanding of the software that drives your machine. Embrace the challenge and grow your skills!
 
+![Marlin_To_Klipper](https://github.com/MushuDG/ATMegaSpin/blob/main/Pictures/Readme/Marlin_To_Klipper.png)
+
 ## Ready to Dive In? 💻
 
 In this documentation, I’ll guide you through the entire process—from hardware setup to firmware configuration. Whether you’re a seasoned maker or just curious, this guide has something for everyone. So, let’s get started and transform your 3D printing experience! 🔧✨
