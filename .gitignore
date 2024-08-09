@@ -1,0 +1,83 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# macOS resource fork files
+._*
+
+# macOS metadata files
+.Spotlight-V100
+.Trashes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Compiled Dynamic libraries
+*.dylib
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.tar
+*.zip
+*.tgz
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+
+# IDE and editor specific files
+.vscode/
+.idea/
+*.code-workspace
+
+# Python specific files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+env/
+venv/
+.Python
+.python-version
+
+# Node.js specific files
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Backup files
+*.bak
+*.swp
+*.swo
+*~
+
+# macOS XCode
+xcuserdata/
+*.xcuserstate
+*.xcworkspace/
+*.xcproj/
+
+# Disk images
+*.dmg
+*.sparseimage
+*.iso
+
+# Swift Packages
+.swiftpm/
+.build/
