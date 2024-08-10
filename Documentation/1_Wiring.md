@@ -1,6 +1,6 @@
 # 🛠️ MakerFr I3-RS32-K Wiring Guide
 
-Welcome to the wiring guide for the MakerFr I3-RS32-K. This guide will help you correctly connect all components to ensure your 3D printer functions optimally. Remember to double-check every connection before powering up, particularly the polarities, to avoid any potential damage. ⚠️
+This guide will help you correctly connect all components to ensure your 3D printer functions optimally. Remember to double-check every connection before powering up, particularly the polarities, to avoid any potential damage. ⚠️
 
 ## Wiring Overview
 
@@ -71,5 +71,5 @@ To proceed with the installation of the CB1 OS, please follow the instructions i
 
 ## References 📚
 
-1. RoMaker. "[I3RS32 presentation](https://www.makerfr.com/en/imprimante-3d/i3-rs32/presentation-de-la-i3rs32/)." *MakerFr*.
+1. RoMaker. "[I3RS32 wiring](https://www.makerfr.com/en/imprimante-3d/i3-rs32/cablage-i3rs32/)." *MakerFr*.
 2. [BigTreeTech Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
