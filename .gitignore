@@ -22,6 +22,8 @@ Temporary Items
 *.a
 *.lib
 
+*Backup
+
 # Packages
 *.7z
 *.dmg
