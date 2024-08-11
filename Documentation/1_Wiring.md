@@ -18,8 +18,8 @@ The table below provides detailed information on each connection point, includin
 | **M1**     | Motor 1 (X-Axis)        | Stepper motor for X-Axis movement          | PA15 (EN), PB9 (STEP), PC6 (DIR), PD9 (CS)    |
 | **M2**     | Motor 2 (Y-Axis)        | Stepper motor for Y-Axis movement          | PA13 (EN), PA10 (STEP), PA14 (DIR), PB9 (CS)  |
 | **M3A**    | Motor 3A (Z-Axis)       | Stepper motor for Z-Axis (Left)            | PA9 (EN), PC7 (STEP), PC8 (DIR), PD8 (CS)     |
-| **M3B**    | Motor 3B (Z-Axis)       | Stepper motor for Z-Axis (Right)           | PA8 (EN), PB7 (STEP), PB8 (DIR), PB6 (CS)     |
-| **M4**     | Motor 4 (Extruder)      | Stepper motor for the extruder             | PB14 (EN), PB15 (STEP), PB13 (DIR), PB12 (CS) |
+| **M4**     | Motor 4 (Z-Axis)        | Stepper motor for Z-Axis (Right)           | PA8 (EN), PB12 (STEP), PB11 (DIR), PB2 (CS)   |
+| **M5**     | Motor 4 (Extruder)      | Stepper motor for the extruder             | PC4 (EN), PB0 (STEP), PB1 (DIR), PA6 (CS)     |
 | **MIN1**   | X switch                | Endstop switch for X-Axis                  | PD3 (GND), PA3 (5V), PA2 (Signal)             |
 | **MIN2**   | Y switch                | Endstop switch for Y-Axis                  | PD5 (GND), PA4 (5V), PA1 (Signal)             |
 | **HE0**    | Hotend Heater           | Heats the filament for extrusion           | PA5 (VBB), PA7 (GND)                          |
