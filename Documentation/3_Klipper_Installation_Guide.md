@@ -147,6 +147,102 @@ PID_CALIBRATE HEATER=extruder TARGET=200
 PID_CALIBRATE HEATER=heater_bed TARGET=60
 ```
 
+## 🛠️ Step 12: Adjust the Z-Offset Using `PROBE_CALIBRATE`
+
+Setting the correct Z-offset is crucial for achieving a perfect first layer. Here’s how to do it using the `PROBE_CALIBRATE` command directly from the OctoPrint terminal.
+
+### Step 12.1: Open the OctoPrint Terminal
+
+1. Access your OctoPrint interface via your web browser.
+2. Navigate to the **Terminal** tab.
+
+### Step 12.2: Start the Probe Calibration
+
+In the terminal, initiate the probe calibration process by entering:
+
+```gcode
+PROBE_CALIBRATE
+```
+
+This command will begin the process by homing the printer and then moving the probe to the center of the bed.
+
+### Step 12.3: Adjust the Z-Offset
+
+Once the probe is positioned, the nozzle will move down toward the bed. You need to manually adjust the Z-offset using the following command:
+
+```gcode
+TESTZ Z=-0.1
+```
+
+Keep sending the `TESTZ` command with small negative increments (e.g., `Z=-0.1`) until the nozzle is at the perfect distance from the bed. Use a piece of paper as a feeler gauge—when you feel slight resistance while moving the paper, you've found the correct offset.
+
+### Step 12.4: Save the Calibration
+
+After finding the right Z-offset, save the configuration with:
+
+```gcode
+ACCEPT
+SAVE_CONFIG
+```
+
+The `ACCEPT` command will finalize the Z-offset setting, and `SAVE_CONFIG` will write this setting to your `printer.cfg` file.
+
+### Step 12.5: Test the New Z-Offset
+
+Finally, test your new Z-offset by printing a small test print to ensure the first layer adheres correctly. If further adjustments are needed, repeat the above steps.
+
+
+
+### 🛠️ Step 13: Calibrating Extruder Rotation Distance
+
+The `rotation_distance` of an extruder is the distance that the filament travels during one complete rotation of the stepper motor. To get this setting just right, it’s best to use a "measure and adjust" method. Here’s how:
+
+#### Initial Setup
+
+1. **Estimate the Rotation Distance:** Start with an initial estimate of the `rotation_distance`. You can derive this from `steps_per_mm` or by inspecting your hardware.
+   
+2. **Prepare Your Printer:**
+   - Make sure the extruder is loaded with filament.
+   - Heat the hotend to the appropriate temperature.
+   - Ensure your printer is ready to extrude.
+
+#### Step-by-Step Calibration
+
+1. **Mark the Filament:**
+   - Use a marker to place a mark on the filament approximately 70 mm from where it enters the extruder.
+   - Use digital calipers to measure the exact distance from the mark to the extruder entrance. Record this as `initial_mark_distance`.
+
+2. **Extrude Filament:**
+   - In your printer’s terminal, run the following commands to extrude 50 mm of filament:
+     ```
+     G91
+     G1 E50 F60
+     ```
+   - Record 50 mm as `requested_extrusion_distance`.
+   - Wait for the extruder to complete the movement (about 50 seconds). Using a slow speed is crucial for accuracy, as faster speeds may cause high pressure, distorting your results. (Avoid using graphical interface extrude buttons for this test—they extrude too quickly.)
+
+3. **Measure the Result:**
+   - Use the calipers again to measure the new distance from the extruder entrance to the mark on the filament. Record this as `final_mark_distance`.
+   - Calculate the actual amount extruded:  
+     `actual_extrusion_distance = initial_mark_distance - final_mark_distance`
+
+4. **Update the Rotation Distance:**
+   - Calculate the new `rotation_distance` using:  
+     `new_rotation_distance = previous_rotation_distance * actual_extrusion_distance / requested_extrusion_distance`
+   - Round the new `rotation_distance` to three decimal places.
+
+5. **Repeat if Necessary:**
+   - If the `actual_extrusion_distance` differs from the `requested_extrusion_distance` by more than 2 mm, repeat the steps above to refine your calibration.
+
+#### Important Note
+
+Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. This method isn’t precise enough for those axes and may lead to a suboptimal setup. For those, measure your belts, pulleys, and lead screws instead.
+
 ---
 
 🎉 Congratulations! You've successfully installed Klipper on your BTT CB1 with a BTT Manta M5P using KIAUH. Enjoy the enhanced performance and capabilities Klipper brings to your 3D printing experience!
+
+## References 📚
+
+1. [BigTreeTech Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
+2. [Klipper3D Documentation](https://www.klipper3d.org)
