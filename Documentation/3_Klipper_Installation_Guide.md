@@ -60,14 +60,15 @@ Run KIAUH to open the installation menu:
 
 ## 🎛️ Step 7: Install OctoPrint
 
-1. From the `Installation Menu`, type `6` to start octoprint installation.
-2. Enter `Y` to install Octoprint (this step may take a while. Don't quit during the installation.).
+1. From the `Installation Menu`, type `6` to start OctoPrint installation.
+2. Enter `Y` to install OctoPrint (this step may take a while. Don't quit during the installation).
 
 ## 🔧 Step 8: Configure Klipper
 
-1. From the main menu, use `4` to enter in the `advanced menu`.
-2. Type `2` to enter the klipper firmware building setup.
+1. From the main menu, use `4` to enter the `Advanced Menu`.
+2. Type `2` to enter the Klipper firmware building setup.
 3. Enter these parameters:
+
 ```bash
 [*] Enable extra low-level configuration options
     Micro-controller Architecture (STMicroelectronics STM32) --->
@@ -76,14 +77,15 @@ Run KIAUH to open the installation menu:
     Clock Reference (8 MHz crystal) --->
     Communication interface (USB (on PA11/PA12)) --->
 ```
-4. Type `q` to quit and save the config. The building step will automatically be launched
-5. Type `3`in the `Advanced Menu`.
-6. Type `1` to use regular flashing method.
+
+4. Type `q` to quit and save the config. The building step will automatically be launched.
+5. Type `3` in the `Advanced Menu`.
+6. Type `1` to use the regular flashing method.
 7. Type `1` to use `make flash`.
 8. Type `1` to install in USB mode.
 9. Enter your available MCU number and enter `Y` to continue.
-Note: After the writing is completed, there will be an error message: dfu-util: Error
-during download get_status, just ignore it.
+
+   **Note:** After the writing is completed, there will be an error message: `dfu-util: Error during download get_status`, just ignore it.
 
 ## 🌐 Step 9: Access OctoPrint
 
@@ -98,12 +100,52 @@ Replace `<IP_of_your_BTT_CB1>` with the actual IP address of your BTT CB1.
 ## ⚙️ Step 10: Configure OctoPrint for Klipper
 
 1. In OctoPrint, navigate to **Settings**.
-2. Under **"Serial Connection"**, configure the serial connection to communicate with Klipper `/home/biqu/printer_data/comms/klippy.serial`.
-3. In **"Plugin Manager"**, ensure all necessary plugins are installed, including those required for Klipper.
+2. Under **"Serial Connection"**, configure the serial connection to communicate with Klipper using `/home/biqu/printer_data/comms/klippy.serial`.
+3. In **"Plugin Manager"**, ensure OctoKlipper is installed.
+4. In **"OctoKlipper -> Basic's settings"** set:
+
+   - Serial Port: `/home/biqu/printer_data/comms/klippy.serial`
+   - Klipper Config Directory: `/home/biqu/printer_data/config`
+   - Klipper Base Config Filename: `printer.cfg`
+   - Klipper Log File: `~/klippy.log`
+
+5. Copy the [printer.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Klipper_Config/printer.cfg) content into the `/home/biqu/printer_data/config/printer.cfg` file.
+
+   **Important:** Adapt the `printer.cfg` to your requirements, and change the `[mcu]` section with your serial ID.
+
+   To find your serial ID, enter the following command in your SSH connection:
+
+   ```bash
+   ls /dev/serial/by-id
+   ```
 
 ## 🔄 Step 11: Reboot and Test
 
 Finally, reboot your BTT CB1 to ensure everything is set up correctly. After rebooting, test your setup by sending a command to your 3D printer via OctoPrint.
+
+You can test with the following commands:
+
+### Home Axes + Bed Mesh Calibration:
+```gcode
+G28
+BED_MESH_CALIBRATE
+SAVE_CONFIG
+```
+
+### Z-Tilt:
+```gcode
+Z_TILT_ADJUST
+```
+
+### PID Calibration for Hotend:
+```gcode
+PID_CALIBRATE HEATER=extruder TARGET=200
+```
+
+### PID Calibration for Bed:
+```gcode
+PID_CALIBRATE HEATER=heater_bed TARGET=60
+```
 
 ---
 
