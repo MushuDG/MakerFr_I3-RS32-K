@@ -193,11 +193,11 @@ Finally, test your new Z-offset by printing a small test print to ensure the fir
 
 
 
-### 🛠️ Step 13: Calibrating Extruder Rotation Distance
+## 🛠️ Step 13: Calibrating Extruder Rotation Distance
 
 The `rotation_distance` of an extruder is the distance that the filament travels during one complete rotation of the stepper motor. To get this setting just right, it’s best to use a "measure and adjust" method. Here’s how:
 
-#### Initial Setup
+### Initial Setup
 
 1. **Estimate the Rotation Distance:** Start with an initial estimate of the `rotation_distance`. You can derive this from `steps_per_mm` or by inspecting your hardware.
    
@@ -206,7 +206,7 @@ The `rotation_distance` of an extruder is the distance that the filament travels
    - Heat the hotend to the appropriate temperature.
    - Ensure your printer is ready to extrude.
 
-#### Step-by-Step Calibration
+### Step-by-Step Calibration
 
 1. **Mark the Filament:**
    - Use a marker to place a mark on the filament approximately 70 mm from where it enters the extruder.
@@ -234,7 +234,7 @@ The `rotation_distance` of an extruder is the distance that the filament travels
 5. **Repeat if Necessary:**
    - If the `actual_extrusion_distance` differs from the `requested_extrusion_distance` by more than 2 mm, repeat the steps above to refine your calibration.
 
-#### Important Note
+### Important Note
 
 Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. This method isn’t precise enough for those axes and may lead to a suboptimal setup. For those, measure your belts, pulleys, and lead screws instead.
 
