@@ -238,6 +238,40 @@ The `rotation_distance` of an extruder is the distance that the filament travels
 
 Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. This method isn’t precise enough for those axes and may lead to a suboptimal setup. For those, measure your belts, pulleys, and lead screws instead.
 
+## 🛠️ Step 14: Configuring Slicer
+1. Download and install the prusaslicer [IR-RS32 preset](https://www.makerfr.com/wp-content/uploads/2020/06/preset-I3RS32.zip).
+2. Modify the printer personalized Startup G-code with this:
+```gcode
+G21                                     ;metric values
+G90                                     ;absolute positioning
+M107                                    ; start with the fan off
+G4 P300                                 ; delay for Bltouch
+M104 S[first_layer_temperature]         ; set extruder temp 
+M140 S[first_layer_bed_temperature]     ; set bed temp 
+M190 S[first_layer_bed_temperature]     ; wait for bed temp 
+M109 S[first_layer_temperature]         ; wait for extruder temp 
+G28                                     ; home all axis
+BED_MESH_CALIBRATE                      ; autolevel
+G1 X30 Y-3 F5000                        ; go outside print area 
+G1  Z0.3
+G92 E0
+G1 X160.0 E9 F1000.0                    ; intro line 
+G1 X80.0 Y-2.0 E12.5 F1000.0            ; intro line 
+G92 E0.0
+G1 Y0 Z0
+```
+3. Modify the printer personalized End G-code with this:
+```gcode
+G91                                     ; relative positioning
+G1 E-2 F6000                            ; retractation extruder 2mm
+G0 Z1                                   ; Z +1
+G28 X                                   ; home X axis
+M104 S0                                 ; turn off temperature
+M140 S0                                 ; turn off heatbed
+G90                                     ; absolute positioning
+G0 Y200                                 ; Y at 200mm
+
+```
 ---
 
 🎉 Congratulations! You've successfully installed Klipper on your BTT CB1 with a BTT Manta M5P using KIAUH. Enjoy the enhanced performance and capabilities Klipper brings to your 3D printing experience!
@@ -246,3 +280,4 @@ Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. Thi
 
 1. [BigTreeTech Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
 2. [Klipper3D Documentation](https://www.klipper3d.org)
+3. RoMaker. "[I3RS32 settings](https://www.makerfr.com/imprimante-3d/i3-rs32/reglages-i3-rs32/)." *MakerFr*.
