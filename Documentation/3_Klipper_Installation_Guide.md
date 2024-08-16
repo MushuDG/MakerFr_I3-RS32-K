@@ -109,7 +109,7 @@ Replace `<IP_of_your_BTT_CB1>` with the actual IP address of your BTT CB1.
    - Klipper Base Config Filename: `printer.cfg`
    - Klipper Log File: `~/klippy.log`
 
-5. Copy the [printer.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Klipper_Config/printer.cfg) content into the `/home/biqu/printer_data/config/printer.cfg` file.
+5. Copy the [printer.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config) (select and adapt it to your requirements) content into the `/home/biqu/printer_data/config/printer.cfg` file.
 
    **Important:** Adapt the `printer.cfg` to your requirements, and change the `[mcu]` section with your serial ID.
 
@@ -134,17 +134,18 @@ SAVE_CONFIG
 
 ### Z-Tilt:
 ```gcode
+G28
 Z_TILT_ADJUST
 ```
 
 ### PID Calibration for Hotend:
 ```gcode
-PID_CALIBRATE HEATER=extruder TARGET=200
+PID_CALIBRATE HEATER=extruder TARGET=205
 ```
 
 ### PID Calibration for Bed:
 ```gcode
-PID_CALIBRATE HEATER=heater_bed TARGET=60
+PID_CALIBRATE HEATER=heater_bed TARGET=65
 ```
 
 ## 🛠️ Step 12: Adjust the Z-Offset Using `PROBE_CALIBRATE`
