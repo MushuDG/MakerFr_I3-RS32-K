@@ -29,6 +29,8 @@ This guide will walk you through installing Klipper on your BTT CB1 with a BTT M
 14. [🛠️ Step 13: Calibrating Extruder Rotation Distance](#%EF%B8%8F-step-13-calibrating-extruder-rotation-distance)
     - [Initial Setup](#initial-setup)
     - [Step-by-Step Calibration](#step-by-step-calibration)
+15. [🛠️ Step 14: Configuring Slicer](#%EF%B8%8F-step-14-configuring-slicer)
+16. [References 📚](#references-)
 
 ## 🎯 Prerequisites
 
@@ -248,4 +250,74 @@ The `rotation_distance` of an extruder is the distance that the filament travels
 4. **Update the Rotation Distance:**
    - Calculate the new `rotation_distance` using:  
      `new_rotation_distance = previous_rotation_distance * actual_extrusion_distance / requested_extrusion_distance`
+  - Round the new `rotation_distance` to three decimal places.
 
+5. **Repeat if Necessary:**
+   - If the `actual_extrusion_distance` differs from the `requested_extrusion_distance` by more than 2 mm, repeat the steps above to refine your calibration.
+
+### Important Note
+
+Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. This method isn’t precise enough for those axes and may lead to a suboptimal setup. For those, measure your belts, pulleys, and lead screws instead.
+
+## 🛠️ Step 13: Configuring Slicer
+1. Download and install the prusaslicer [I3-RS32 preset](https://www.makerfr.com/wp-content/uploads/2020/06/preset-I3RS32.zip).
+2. Modify the printer personalized Startup G-code with this:
+```gcode
+; ================================================
+;                  STARTING G-CODE
+; ================================================
+; Description: This section prepares the printer for
+;              the start of the print. It handles
+;              preheating, bed leveling, and extrusion
+;              preparation.
+; ================================================
+; Start of Starting G-code
+M104 S170                                                                           ; Set extruder temperature
+M140 S[first_layer_bed_temperature]                                                 ; Set bed temperature
+M190 S[first_layer_bed_temperature]                                                 ; Wait for bed to reach target temperature
+M109 S170                                                                           ; Wait for extruder to reach target temperature
+G28                                                                                 ; Home all axes
+G92 E0                                                                              ; Reset extruder position
+CUSTOM_BED_MESH_CALIBRATE X={first_layer_print_min[0]} Y={first_layer_print_min[1]} W={(first_layer_print_max[0]) - (first_layer_print_min[0])} H={(first_layer_print_max[1]) - (first_layer_print_min[1])}                                                         ; Calibrate the mesh using automatic method with adaptive mesh and 2mm margin
+G1 X0 Y-3 F3000                                                                     ; Move the nozzle to a safe area near the bed for priming
+M104 S[first_layer_temperature]                                                     ; Set extruder temperature to the first layer temperature
+M109 S[first_layer_temperature]                                                     ; Wait for extruder to reach the first layer temperature
+G1 E0 F2400                                                                         ; Undo the retraction
+G1 E4 F2400                                                                         ; Purge a small amount of filament
+G92 E0                                                                              ; Reset extruder position again
+G1 X30 Y-3 Z0.2 F3000                                                               ; Move to start position for the purge line
+G1 X110.0 E9.0 F1000.0                                                              ; Draw the first line of the purge
+G1 X50.0 Y-2.0 E12.5 F1000.0                                                        ; Draw the second line of the purge
+G92 E0                                                                              ; Reset extruder position again
+G1 Z5 F5000                                                                         ; Lift nozzle after purge to avoid dragging
+; Ready for printing
+```
+3. Modify the printer personalized End G-code with this:
+```gcode
+; ================================================
+;                   END G-CODE
+; ================================================
+; Description: This section finalizes the print by
+;              retracting the filament, turning off
+;              heaters, and moving the print head and
+;              bed to safe positions.
+; ================================================
+; Start of End G-code
+G91                                      ; Relative positioning
+G1 E-5 F2400                             ; Retract the filament by 2mm (slower for controlled retraction)
+G1 Z1                                    ; Lift the nozzle 10mm to avoid collision with the print
+G90                                      ; Absolute positioning
+G1 X0 Y200 F3000                         ; Move the bed forward for easy part removal and home X axis
+M104 S0                                  ; Turn off the extruder heater
+M140 S0                                  ; Turn off the bed heater
+M107                                     ; Turn off the fan
+M84                                      ; Disable motors
+```
+---
+
+🎉 Congratulations! You've successfully installed Klipper on your BTT CB1 with a BTT Manta M5P using KIAUH. Enjoy the enhanced performance and capabilities Klipper brings to your 3D printing experience!
+
+## References 📚
+1. [BigTreeTech Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
+2. [Klipper3D Documentation](https://www.klipper3d.org)
+3. RoMaker. "[I3RS32 settings](https://www.makerfr.com/imprimante-3d/i3-rs32/reglages-i3-rs32/)." *MakerFr*.
