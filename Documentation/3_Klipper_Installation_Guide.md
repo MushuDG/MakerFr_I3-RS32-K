@@ -259,7 +259,7 @@ The `rotation_distance` of an extruder is the distance that the filament travels
 
 Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. This method isn’t precise enough for those axes and may lead to a suboptimal setup. For those, measure your belts, pulleys, and lead screws instead.
 
-## 🛠️ Step 13: Configuring Slicer
+## 🛠️ Step 14: Configuring Slicer
 1. Download and install the prusaslicer [I3-RS32 preset](https://www.makerfr.com/wp-content/uploads/2020/06/preset-I3RS32.zip).
 2. Modify the printer personalized Startup G-code with this:
 ```gcode
