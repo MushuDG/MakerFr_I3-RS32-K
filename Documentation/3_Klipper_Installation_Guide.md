@@ -3,6 +3,35 @@
 
 This guide will walk you through installing Klipper on your BTT CB1 with a BTT Manta M5P using KIAUH (Klipper Installation And Update Helper). Let's get started!
 
+## Table of Contents
+1. [🎯 Prerequisites](#-prerequisites)
+2. [🛠️ Step 1: SSH into Your Machine](#️-step-1-ssh-into-your-machine)
+3. [🧰 Step 2: Install Git](#-step-2-install-git)
+4. [📥 Step 3: Clone the KIAUH Repository](#-step-3-clone-the-kiauh-repository)
+5. [🚀 Step 4: Launch KIAUH](#-step-4-launch-kiauh)
+6. [🔧 Step 5: Install Klipper](#-step-5-install-klipper)
+7. [🎛️ Step 6: Install OctoPrint](#-step-6-install-octoprint)
+8. [🔧 Step 7: Configure Klipper](#-step-7-configure-klipper)
+9. [🌐 Step 8: Access OctoPrint](#-step-8-access-octoprint)
+10. [⚙️ Step 9: Configure OctoPrint for Klipper](#️-step-9-configure-octoprint-for-klipper)
+11. [🔄 Step 10: Reboot and Test](#-step-10-reboot-and-test)
+    - [Home Axes + Bed Mesh Calibration](#home-axes--bed-mesh-calibration)
+    - [Z-Tilt](#z-tilt)
+    - [PID Calibration for Hotend](#pid-calibration-for-hotend)
+    - [PID Calibration for Bed](#pid-calibration-for-bed)
+12. [🛠️ Step 11: Adjust the Z-Offset Using `PROBE_CALIBRATE`](#-step-11-adjust-the-z-offset-using-probe_calibrate)
+    - [Step 11.1: Open the OctoPrint Terminal](#step-111-open-the-octoprint-terminal)
+    - [Step 11.2: Start the Probe Calibration](#step-112-start-the-probe-calibration)
+    - [Step 11.3: Adjust the Z-Offset](#step-113-adjust-the-z-offset)
+    - [Step 11.4: Save the Calibration](#step-114-save-the-calibration)
+    - [Step 11.5: Test the New Z-Offset](#step-115-test-the-new-z-offset)
+13. [🛠️ Step 12: Calibrating Extruder Rotation Distance](#-step-12-calibrating-extruder-rotation-distance)
+    - [Initial Setup](#initial-setup)
+    - [Step-by-Step Calibration](#step-by-step-calibration)
+    - [Important Note](#important-note)
+14. [🛠️ Step 13: Configuring Slicer](#-step-13-configuring-slicer)
+15. [References 📚](#references-)
+
 ## 🎯 Prerequisites
 
 Before we begin, ensure you have the following:
@@ -53,17 +82,12 @@ Run KIAUH to open the installation menu:
 2. Select your preferred Python version. Use `1` for the recommended setting.
 3. Select the number of Klipper instances to set up. The number of Klipper instances will determine the amount of printers you can run from the host. Select `1` to install 1 instance.
 
-## 🌕 Step 6: Install Moonraker
-
-1. Select `Install Moonraker` from the menu using `1` and `2` in the `[ Installation Menu ]`.
-2. Enter `Y` to install Moonraker.
-
-## 🎛️ Step 7: Install OctoPrint
+## 🎛️ Step 6: Install OctoPrint
 
 1. From the `Installation Menu`, type `6` to start OctoPrint installation.
 2. Enter `Y` to install OctoPrint (this step may take a while. Don't quit during the installation).
 
-## 🔧 Step 8: Configure Klipper
+## 🔧 Step 7: Configure Klipper
 
 1. From the main menu, use `4` to enter the `Advanced Menu`.
 2. Type `2` to enter the Klipper firmware building setup.
@@ -87,7 +111,7 @@ Run KIAUH to open the installation menu:
 
    **Note:** After the writing is completed, there will be an error message: `dfu-util: Error during download get_status`, just ignore it.
 
-## 🌐 Step 9: Access OctoPrint
+## 🌐 Step 8: Access OctoPrint
 
 After everything is set up, you can access OctoPrint from your web browser:
 
@@ -97,7 +121,7 @@ http://<IP_of_your_BTT_CB1>:5000
 
 Replace `<IP_of_your_BTT_CB1>` with the actual IP address of your BTT CB1.
 
-## ⚙️ Step 10: Configure OctoPrint for Klipper
+## ⚙️ Step 9: Configure OctoPrint for Klipper
 
 1. In OctoPrint, navigate to **Settings**.
 2. Under **"Serial Connection"**, configure the serial connection to communicate with Klipper using `/home/biqu/printer_data/comms/klippy.serial`.
@@ -119,7 +143,7 @@ Replace `<IP_of_your_BTT_CB1>` with the actual IP address of your BTT CB1.
    ls /dev/serial/by-id
    ```
 
-## 🔄 Step 11: Reboot and Test
+## 🔄 Step 10: Reboot and Test
 
 Finally, reboot your BTT CB1 to ensure everything is set up correctly. After rebooting, test your setup by sending a command to your 3D printer via OctoPrint.
 
@@ -148,16 +172,16 @@ PID_CALIBRATE HEATER=extruder TARGET=205
 PID_CALIBRATE HEATER=heater_bed TARGET=65
 ```
 
-## 🛠️ Step 12: Adjust the Z-Offset Using `PROBE_CALIBRATE`
+## 🛠️ Step 11: Adjust the Z-Offset Using `PROBE_CALIBRATE`
 
 Setting the correct Z-offset is crucial for achieving a perfect first layer. Here’s how to do it using the `PROBE_CALIBRATE` command directly from the OctoPrint terminal.
 
-### Step 12.1: Open the OctoPrint Terminal
+### Step 11.1: Open the OctoPrint Terminal
 
 1. Access your OctoPrint interface via your web browser.
 2. Navigate to the **Terminal** tab.
 
-### Step 12.2: Start the Probe Calibration
+### Step 11.2: Start the Probe Calibration
 
 In the terminal, initiate the probe calibration process by entering:
 
@@ -167,7 +191,7 @@ PROBE_CALIBRATE
 
 This command will begin the process by homing the printer and then moving the probe to the center of the bed.
 
-### Step 12.3: Adjust the Z-Offset
+### Step 11.3: Adjust the Z-Offset
 
 Once the probe is positioned, the nozzle will move down toward the bed. You need to manually adjust the Z-offset using the following command:
 
@@ -177,7 +201,7 @@ TESTZ Z=-0.1
 
 Keep sending the `TESTZ` command with small negative increments (e.g., `Z=-0.1`) until the nozzle is at the perfect distance from the bed. Use a piece of paper as a feeler gauge—when you feel slight resistance while moving the paper, you've found the correct offset.
 
-### Step 12.4: Save the Calibration
+### Step 11.4: Save the Calibration
 
 After finding the right Z-offset, save the configuration with:
 
@@ -188,13 +212,11 @@ SAVE_CONFIG
 
 The `ACCEPT` command will finalize the Z-offset setting, and `SAVE_CONFIG` will write this setting to your `printer.cfg` file.
 
-### Step 12.5: Test the New Z-Offset
+### Step 11.5: Test the New Z-Offset
 
 Finally, test your new Z-offset by printing a small test print to ensure the first layer adheres correctly. If further adjustments are needed, repeat the above steps.
 
-
-
-## 🛠️ Step 13: Calibrating Extruder Rotation Distance
+## 🛠️ Step 12: Calibrating Extruder Rotation Distance
 
 The `rotation_distance` of an extruder is the distance that the filament travels during one complete rotation of the stepper motor. To get this setting just right, it’s best to use a "measure and adjust" method. Here’s how:
 
@@ -239,7 +261,7 @@ The `rotation_distance` of an extruder is the distance that the filament travels
 
 Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. This method isn’t precise enough for those axes and may lead to a suboptimal setup. For those, measure your belts, pulleys, and lead screws instead.
 
-## 🛠️ Step 14: Configuring Slicer
+## 🛠️ Step 13: Configuring Slicer
 1. Download and install the prusaslicer [I3-RS32 preset](https://www.makerfr.com/wp-content/uploads/2020/06/preset-I3RS32.zip).
 2. Modify the printer personalized Startup G-code with this:
 ```gcode
@@ -253,19 +275,17 @@ Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. Thi
 ; ================================================
 
 ; Start of Starting G-code
-G28                                                                                 ; Home all axes
-G92 E0                                                                              ; Reset extruder position
-;G1 E-2 F2400                                                                        ; Retract filament to avoid oozing during heating
-
-G1 X0 Y0 Z10 F3000                                                                  ; Move the nozzle to the corner of the bed
 M104 S170                                                                           ; Set extruder temperature
 M140 S[first_layer_bed_temperature]                                                 ; Set bed temperature
 M190 S[first_layer_bed_temperature]                                                 ; Wait for bed to reach target temperature
 M109 S170                                                                           ; Wait for extruder to reach target temperature
 
+G28                                                                                 ; Home all axes
+G92 E0                                                                              ; Reset extruder position
+
 CUSTOM_BED_MESH_CALIBRATE X={first_layer_print_min[0]} Y={first_layer_print_min[1]} W={(first_layer_print_max[0]) - (first_layer_print_min[0])} H={(first_layer_print_max[1]) - (first_layer_print_min[1])}                                                         ; Calibrate the mesh using automatic method with adaptive mesh and 2mm margin
 
-G1 X10 Y-3 F3000                                                                    ; Move the nozzle to a safe area near the bed for priming
+G1 X0 Y-3 F3000                                                                     ; Move the nozzle to a safe area near the bed for priming
 
 M104 S[first_layer_temperature]                                                     ; Set extruder temperature to the first layer temperature
 M109 S[first_layer_temperature]                                                     ; Wait for extruder to reach the first layer temperature

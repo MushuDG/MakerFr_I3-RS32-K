@@ -3,6 +3,16 @@
 
 When using CB1, you can only download and install the OS image provided by BIGTREETECH. Please visit the following link to download the latest minimal version of Debian for CB1: [Download OS Image](https://github.com/bigtreetech/CB1/releases).
 
+## Table of Contents
+1. [Write OS 📝](#write-os-)
+2. [WiFi Setting 📶](#wifi-setting-)
+3. [Final Steps ✅](#final-steps-)
+   - [Default SSH Credentials](#default-ssh-credentials)
+4. [Additional Settings 🔐](#additional-settings-)
+   - [Change Default Password](#change-default-password)
+   - [Install ZSH for a Better Shell Experience 🐚](#install-zsh-for-a-better-shell-experience-)
+5. [References 📚](#references-)
+
 ## Write OS 📝
 
 Follow these steps to write the OS image to a MicroSD card:

@@ -2,6 +2,18 @@
 
 This guide will help you correctly connect all components to ensure your 3D printer functions optimally. Remember to double-check every connection before powering up, particularly the polarities, to avoid any potential damage. ⚠️
 
+## Table of Contents
+1. [Wiring Overview](#wiring-overview)
+   - [Connection Table](#connection-table)
+2. [Important Note 📌](#important-note-)
+3. [Display Wiring](#display-wiring)
+4. [Jumpers Configuration 🔧](#jumpers-configuration-)
+   - [UART Mode of TMC Driver](#uart-mode-of-tmc-driver)
+   - [Driver Voltage Selection](#driver-voltage-selection)
+   - [CNC Fan Voltage Selection](#cnc-fan-voltage-selection)
+5. [Additional Steps ✅](#additional-steps-)
+6. [References 📚](#references-)
+
 ## Wiring Overview
 
 Refer to the following diagram for the overall wiring layout:
