@@ -30,6 +30,29 @@ So, I decided it was time to dive into something new and exciting. I wanted a cl
 
    - If you’re like me, you love to tinker and learn. This migration isn’t just about better prints—it’s about deepening your understanding of the software that drives your machine. Embrace the challenge and grow your skills!
 
+## Parts and 3D Printed Parts 🛒
+
+### Parts to Purchase
+
+| Item                                             | Price (USD) | Link                                                                                                                   |
+|--------------------------------------------------|-------------|------------------------------------------------------------------------------------------------------------------------|
+| **BIGTREETECH Manta M5P**                        | ~$53.00     | [BIGTREETECH Manta M5P](https://biqu.equipment/products/manta-m4p-m8p?variant=40215552852066)                          |
+| **BIGTREETECH CB1**                              | ~$30.00     | [BIGTREETECH CB1](https://biqu.equipment/products/manta-m4p-m8p?variant=39847241384034)                                |
+| **BIGTREETECH CB1 Heatsink**                     | ~$5.50      | [BIGTREETECH CB1 Heatsink](https://biqu.equipment/products/manta-m4p-m8p?variant=39847241416802)                       |
+| **Optional:**                                    |             |                                                                                                                        |
+| **BIGTREETECH TFT35 SPI V2.1 Touch Screen**      | ~$24.00     | [BIGTREETECH TFT35 SPI V2.1 Touch Screen](https://biqu.equipment/collections/lcd-screen/products/bigtreetech-tft35-spi-v2-1-touchscreen-io2can-module) |
+
+### 3D Printed Parts
+
+| Item                      | Link                                                                                              |
+|---------------------------|---------------------------------------------------------------------------------------------------|
+| **Manta_M5P_Box.stl**      | [Manta_M5P_Box.stl](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/STL)                   |
+| **Manta_M5P_Cover.stl**    | [Manta_M5P_Cover.stl](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/STL)                 |
+| **Optional:**             |                                                                                                   |
+| **TFT35-SPI.stl**          | [TFT35-SPI.stl](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/STL)                       |
+| **TFTholder.stl**          | [TFTholder.stl](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/STL)                       |
+
+
 ## Ready to Dive In? 💻
 
 In this documentation, I’ll guide you through the entire process—from hardware setup to firmware configuration. Whether you’re a seasoned maker or just curious, this guide has something for everyone. So, let’s get started and transform your 3D printing experience! 🔧✨
