@@ -271,23 +271,32 @@ Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. Thi
 ;              preheating, bed leveling, and extrusion
 ;              preparation.
 ; ================================================
+
 ; Start of Starting G-code
 M104 S170                                                                           ; Set extruder temperature
 M140 S[first_layer_bed_temperature]                                                 ; Set bed temperature
 M190 S[first_layer_bed_temperature]                                                 ; Wait for bed to reach target temperature
 M109 S170                                                                           ; Wait for extruder to reach target temperature
-G28                                                                                 ; Home all axes
+
+Z_TILT                                                                              ; Home all axes + Z_tilt
 G92 E0                                                                              ; Reset extruder position
-CUSTOM_BED_MESH_CALIBRATE X={first_layer_print_min[0]} Y={first_layer_print_min[1]} W={(first_layer_print_max[0]) - (first_layer_print_min[0])} H={(first_layer_print_max[1]) - (first_layer_print_min[1])}                                                         ; Calibrate the mesh using automatic method with adaptive mesh and 2mm margin
+
+BED_MESH_CALIBRATE
+;CUSTOM_BED_MESH_CALIBRATE X={first_layer_print_min[0]} Y={first_layer_print_min[1]} W={(first_layer_print_max[0]) - (first_layer_print_min[0])} H={(first_layer_print_max[1]) - (first_layer_print_min[1])}                                                         ; Calibrate the mesh using automatic method with adaptive mesh and 2mm margin
+
 G1 X0 Y-3 F3000                                                                     ; Move the nozzle to a safe area near the bed for priming
+
 M104 S[first_layer_temperature]                                                     ; Set extruder temperature to the first layer temperature
 M109 S[first_layer_temperature]                                                     ; Wait for extruder to reach the first layer temperature
+
 G1 E0 F2400                                                                         ; Undo the retraction
-G1 E4 F2400                                                                         ; Purge a small amount of filament
+G1 E10 F2400                                                                        ; Purge a small amount of filament
 G92 E0                                                                              ; Reset extruder position again
+
 G1 X30 Y-3 Z0.2 F3000                                                               ; Move to start position for the purge line
 G1 X110.0 E9.0 F1000.0                                                              ; Draw the first line of the purge
 G1 X50.0 Y-2.0 E12.5 F1000.0                                                        ; Draw the second line of the purge
+
 G92 E0                                                                              ; Reset extruder position again
 G1 Z5 F5000                                                                         ; Lift nozzle after purge to avoid dragging
 ; Ready for printing
@@ -302,9 +311,12 @@ G1 Z5 F5000                                                                     
 ;              heaters, and moving the print head and
 ;              bed to safe positions.
 ; ================================================
+
 ; Start of End G-code
+
+
 G91                                      ; Relative positioning
-G1 E-5 F2400                             ; Retract the filament by 2mm (slower for controlled retraction)
+G1 E-10 F2400                             ; Retract the filament by 2mm (slower for controlled retraction)
 G1 Z1                                    ; Lift the nozzle 10mm to avoid collision with the print
 G90                                      ; Absolute positioning
 G1 X0 Y200 F3000                         ; Move the bed forward for easy part removal and home X axis
