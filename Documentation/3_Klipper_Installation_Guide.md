@@ -4,33 +4,36 @@
 This guide will walk you through installing Klipper on your BTT CB1 with a BTT Manta M5P using KIAUH (Klipper Installation And Update Helper). Let's get started!
 
 ## Table of Contents
-1. [🎯 Prerequisites](#-prerequisites)
-2. [🛠️ Step 1: SSH into Your Machine](#️-step-1-ssh-into-your-machine)
-3. [🧰 Step 2: Install Git](#-step-2-install-git)
-4. [📥 Step 3: Clone the KIAUH Repository](#-step-3-clone-the-kiauh-repository)
-5. [🚀 Step 4: Launch KIAUH](#-step-4-launch-kiauh)
-6. [🔧 Step 5: Install Klipper](#-step-5-install-klipper)
-7. [🌑 Step 6: Install Moonraker](#-step-6-install-moonraker)
-8. [💧 Step 7: Install Fluidd](#-step-7-install-fluidd)
-9. [🔧 Step 8: Configure Klipper](#-step-8-configure-klipper)
-10. [🌐 Step 9: Access Fluidd](#-step-9-access-fluidd)
-11. [⚙️ Step 10: Configure Fluidd for Klipper](#️-step-10-configure-fluidd-for-klipper)
-12. [🔄 Step 11: Reboot and Test](#-step-11-reboot-and-test)
-    - [Home Axes + Bed Mesh Calibration](#home-axes--bed-mesh-calibration)
-    - [Z-Tilt](#z-tilt)
-    - [PID Calibration for Hotend](#pid-calibration-for-hotend)
-    - [PID Calibration for Bed](#pid-calibration-for-bed)
-13. [🛠️ Step 12: Adjust the Z-Offset Using `PROBE_CALIBRATE`](#%EF%B8%8F-step-12-adjust-the-z-offset-using-probe_calibrate)
+- [🚀 Klipper Installation Guide via KIAUH](#-klipper-installation-guide-via-kiauh)
+  - [Table of Contents](#table-of-contents)
+  - [🎯 Prerequisites](#-prerequisites)
+  - [🛠️ Step 1: SSH into Your Machine](#️-step-1-ssh-into-your-machine)
+  - [🧰 Step 2: Install Git](#-step-2-install-git)
+  - [📥 Step 3: Clone the KIAUH Repository](#-step-3-clone-the-kiauh-repository)
+  - [🚀 Step 4: Launch KIAUH](#-step-4-launch-kiauh)
+  - [🔧 Step 5: Install Klipper](#-step-5-install-klipper)
+  - [🌑 Step 6: Install Moonraker](#-step-6-install-moonraker)
+  - [💧 Step 7: Install Fluidd](#-step-7-install-fluidd)
+  - [🔧 Step 8: Configure Klipper](#-step-8-configure-klipper)
+  - [🌐 Step 9: Access Fluidd](#-step-9-access-fluidd)
+  - [⚙️ Step 10: Configure Fluidd for Klipper](#️-step-10-configure-fluidd-for-klipper)
+  - [🔄 Step 11: Reboot and Test](#-step-11-reboot-and-test)
+    - [Home Axes + Bed Mesh Calibration:](#home-axes--bed-mesh-calibration)
+    - [Z-Tilt:](#z-tilt)
+    - [PID Calibration for Hotend:](#pid-calibration-for-hotend)
+    - [PID Calibration for Bed:](#pid-calibration-for-bed)
+  - [🛠️ Step 12: Adjust the Z-Offset Using `PROBE_CALIBRATE`](#️-step-12-adjust-the-z-offset-using-probe_calibrate)
     - [Step 12.1: Open the Fluidd Interface](#step-121-open-the-fluidd-interface)
     - [Step 12.2: Start the Probe Calibration](#step-122-start-the-probe-calibration)
     - [Step 12.3: Adjust the Z-Offset](#step-123-adjust-the-z-offset)
     - [Step 12.4: Save the Calibration](#step-124-save-the-calibration)
     - [Step 12.5: Test the New Z-Offset](#step-125-test-the-new-z-offset)
-14. [🛠️ Step 13: Calibrating Extruder Rotation Distance](#%EF%B8%8F-step-13-calibrating-extruder-rotation-distance)
+  - [🛠️ Step 13: Calibrating Extruder Rotation Distance](#️-step-13-calibrating-extruder-rotation-distance)
     - [Initial Setup](#initial-setup)
     - [Step-by-Step Calibration](#step-by-step-calibration)
-15. [🛠️ Step 14: Configuring Slicer](#%EF%B8%8F-step-14-configuring-slicer)
-16. [References 📚](#references-)
+    - [Important Note](#important-note)
+  - [🛠️ Step 14: Configuring Slicer](#️-step-14-configuring-slicer)
+  - [References 📚](#references-)
 
 ## 🎯 Prerequisites
 
@@ -129,17 +132,56 @@ http://<IP_of_your_BTT_CB1>
 
 Replace `<IP_of_your_BTT_CB1>` with the actual IP address of your BTT CB1.
 
+
 ## ⚙️ Step 10: Configure Fluidd for Klipper
 
-Copy the [printer.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config) (select and adapt it to your requirements) content into the `/home/biqu/printer_data/config/printer.cfg` file.
+To configure Klipper with Fluidd, follow these steps:
 
-   **Important:** Adapt the `printer.cfg` to your requirements, and change the `[mcu]` section with your serial ID.
+1. Download the base configuration files:
+   - [printer.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/base/printer.cfg)
+   - [bed_mesh.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/base/bed_mesh.cfg)
+   - [input_shaping.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/base/input_shaping.cfg)
+   - [macros.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/base/macros.cfg)
+   - [sensors.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/base/sensors.cfg)
+   - [steppers.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/base/steppers.cfg)
 
-   To find your serial ID, enter the following command in your SSH connection:
+2. Choose and download the configuration files for your specific components from the **components_config** folder:
+   - [leds.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/components_config/leds.cfg) (if using Neopixel LEDs)
+   - [tft35-v3.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/components_config/tft35-v3.cfg) (if using the BTT TFT35-V3.0 screen)
+   - [tmc2208.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/components_config/tmc2208.cfg) (if using TMC2208 drivers)
+   - [tmc2209.cfg](https://github.com/MushuDG/MakerFr_I3-RS32-K/tree/main/Klipper_Config/components_config/tmc2209.cfg) (if using TMC2209 drivers)
+
+3. Upload the **printer.cfg** and all relevant included configuration files (including your chosen component files) to the following directory on your BTT CB1:
+   ```bash
+   /home/biqu/printer_data/config/
+   ```
+
+4. Make sure to adapt the `printer.cfg` file to your setup:
+   - Adjust the `[mcu]` section with the correct serial ID of your MCU.
+   - Include or comment out the relevant `include` statements based on your chosen hardware from the **components_config** directory.
+
+   Example from `printer.cfg`:
+
+   ```ini
+   [include bed_mesh.cfg]
+   [include input_shaping.cfg]
+   [include macros.cfg]
+   [include sensors.cfg]
+   [include steppers.cfg]
+   #[include leds.cfg]        # Uncomment if using Neopixel LEDs
+   #[include tft35-v3.cfg]    # Uncomment if using BTT TFT35-V3.0 screen
+   #[include tmc2208.cfg]     # Uncomment if using TMC2208 drivers
+   [include tmc2209.cfg]      # Comment out if using TMC2208 drivers
+   ```
+
+5. To find your MCU serial ID, use this command via SSH:
 
    ```bash
    ls /dev/serial/by-id
    ```
+
+6. Once all files are uploaded and configured, restart Klipper and Fluidd from the web interface.
+
 
 ## 🔄 Step 11: Reboot and Test
 
