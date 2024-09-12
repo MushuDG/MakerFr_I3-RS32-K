@@ -23,7 +23,7 @@ Temporary Items
 *.lib
 
 *Backup
-
+*.old
 # Packages
 *.7z
 *.dmg
