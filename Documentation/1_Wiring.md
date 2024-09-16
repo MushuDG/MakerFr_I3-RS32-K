@@ -35,8 +35,8 @@ The table below provides detailed information on each connection point, includin
 | **MIN1**   | X switch                | Endstop switch for X-Axis                  | PD3 (GND), PA3 (5V), PA2 (Signal)             |
 | **MIN2**   | Y switch                | Endstop switch for Y-Axis                  | PD5 (GND), PA4 (5V), PA1 (Signal)             |
 | **HE0**    | Hotend Heater           | Heats the filament for extrusion           | PA5 (VBB), PA7 (GND)                          |
-| **TH0**    | Hotend Thermistor       | Measures the temperature of the hotend     | PA0 (Signal), GND                             |
-| **TH1**    | Bed Thermistor          | Measures the temperature of the heated bed | PA0 (Signal), GND                             |
+| **TH0**    | Hotend Thermistor       | Measures the temperature of the hotend     | PA1 (Signal), GND                             |
+| **TB**     | Bed Thermistor          | Measures the temperature of the heated bed | PA0 (Signal), GND                             |
 | **HV-IN**  | Power Input             | 24V Power supply connection                | HV+, HV-                                      |
 | **FAN0**   | Part Cooling Fan        | Fan for cooling the printed part           | VBB (Power), PF3 (GND)                        |
 | **FAN1**   | Hotend Cooling Fan      | Fan for cooling the hotend                 | VBB (Power), PF4 (GND)                        |
