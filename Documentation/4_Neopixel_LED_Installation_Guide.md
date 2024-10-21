@@ -68,3 +68,4 @@ This guide will walk you through installing and configuring Neopixel LEDs on you
 2. [BTT Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
 
 Happy printing with your glowing setup! 🌟
+**Optional: Go to [BTT TFT35 SPI installation](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Documentation/5_BTT_TFT35_Installation_Guide.md)**

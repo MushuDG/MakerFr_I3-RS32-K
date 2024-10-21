@@ -366,6 +366,8 @@ Avoid using the "measure and adjust" method for calibrating X, Y, or Z axes. Thi
 
 🎉 Congratulations! You've successfully installed Klipper on your BTT CB1 with a BTT Manta M5P using KIAUH. Enjoy the enhanced performance and capabilities Klipper brings to your 3D printing experience!
 
+**Optional: Go to [Neopixel LEDs Installation Guide](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Documentation/4_Neopixel_LED_Installation_Guide.md)**
+
 ## References 📚
 1. [BigTreeTech Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
 2. [Klipper3D Documentation](https://www.klipper3d.org)
