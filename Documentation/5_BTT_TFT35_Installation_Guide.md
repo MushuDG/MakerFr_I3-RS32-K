@@ -6,10 +6,10 @@ This guide will help you successfully connect and configure your **BTT TFT35 SPI
 ## Table of Contents
 - [🖥️ Integration of BTT TFT35 SPI V2.1 with BTT Manta M5P](#-integration-of-btt-tft35-spi-v21-with-btt-manta-m5p)
   - [🔧 Materials Needed](#-materials-needed)
-  - [🛠️ Step 1: Hardware Installation](#-step-1-hardware-installation)
+  - [🛠️ Step 1: Hardware Installation](#%EF%B8%8F-step-1-hardware-installation)
   - [🔌 Step 2: Cable Length and Ghost Touch Issues](#-step-2-cable-length-and-ghost-touch-issues)
   - [📁 Step 3: Installing KlipperScreen](#-step-3-installing-klipperscreen)
-  - [⚙️ Step 4: Screen Calibration](#-step-4-screen-calibration)
+  - [⚙️ Step 4: Screen Calibration](#%EF%B8%8F-step-4-screen-calibration)
   - [📚 References](#-references)
 
 ## 🔧 Materials Needed
