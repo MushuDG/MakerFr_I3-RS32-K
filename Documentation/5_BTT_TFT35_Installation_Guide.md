@@ -8,8 +8,8 @@ This guide will help you successfully connect and configure your **BTT TFT35 SPI
   - [🔧 Materials Needed](#🔧-materials-needed)
   - [🛠️ Step 1: Hardware Installation](#🛠️-step-1-hardware-installation)
   - [🔌 Step 2: Cable Length and Ghost Touch Issues](#🔌-step-2-cable-length-and-ghost-touch-issues)
-  - [⚙️ Step 3: Screen Calibration](#⚙️-step-3-screen-calibration)
-  - [📁 Step 4: Configuring the Screen in Klipper](#📁-step-4-configuring-the-screen-in-klipper)
+  - [📁 Step 3: Installing KlipperScreen](#📁-step-3-installing-klipperscreen)
+  - [⚙️ Step 4: Screen Calibration](#⚙️-step-4-screen-calibration)
   - [📚 References](#📚-references)
 
 ## 🔧 Materials Needed
@@ -32,10 +32,21 @@ When using a longer SPI cable (over 600mm), some users have reported **ghost tou
 
 This should fix most interference issues.
 
-## Step 4: Enable Screen:
-Uncomment `overlays=tft35_spi` in `/boot/BoardEnv.txt`. 
+## 📁 Step 3: Installing KlipperScreen
 
-## ⚙️ Step 3: Screen Calibration
+Once the hardware is set up and the screen is calibrated, we need to configure it in **Klipper**. **KIAUH** (Klipper Installation and Update Helper) makes it easy to install and configure KlipperScreen.
+
+1. **SSH into your CB1**: Open a terminal and connect to your CB1 using SSH.
+2. **Install KlipperScreen**:
+    - Run the following command to start **KIAUH**:
+    ```bash
+    ./kiauh/kiauh.sh
+    ```
+    - In the main menu, type `1` to open the **Install Menu**, and type `5` to install KlipperScreen.
+    - The tool will automate the process. Once completed, you'll see a success message.
+3. **Restart Klipper**: After installation, restart Klipper, and you should see the TFT35 screen interface.
+
+## ⚙️ Step 4: Screen Calibration
 
 To improve the touch accuracy and avoid any ghost touches, it's important to **calibrate your screen**. Follow this official tutorial from **BTT** for calibrating your TFT35 SPI screen:
 
@@ -165,26 +176,12 @@ for example:
 sudo ./libinput_calibrator.sh 480 320 61 35 417 281
 ```
 
-## 📁 Step 4: Installing KlipperScreen
-
-Once the hardware is set up and the screen is calibrated, we need to configure it in **Klipper**:
-KIUAH, or Klipper Installation and Update Helper, is a fantastic tool that automates the entire Klipper installation experience. In a few steps, you can install Fluidd, Mainsail, Obico, and other Klipper-compatible software for your 3D printer. We'll use this tool to install KlipperScreen as well
-
-1. Remote connect to your CB1 with SSH
-Once logged in, type the following command to open the KIUAH terminal.
-```bash
-./kiauh/kiauh.sh
-```
-2. On the main screen you'll see all the software currently on the system. Notice the KlipperScreen is highlighted in Red and reads as Not Installed.
-Type `1` to Open the Install Menu. Type `5` to begin the process of installing KlipperScreen for your 3D printer. The tool will automatically run the commands. It will take a few minutes for the entire installation process to complete. At the end you'll get a Success message indicating a successful installation of the software.
-3. **Restart Klipper** to apply the changes. You should now see the interface on your TFT35 screen.
-
 ## 📚 References
 
 1. [BTT TFT35 SPI V2.1 Documentation](https://bttwiki.com/tft35_spi_v2.1.html)
 2. [BTT Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
 3. [600mm SPI Cable on eBay](https://www.ebay.fr/itm/253935636526?var=553252486969)
 4. [BTT Screen Calibration Guide](https://bttwiki.com/libinput_calibration.html)
-5. [Klipper-screen Installation](https://www.obico.io/blog/kilpper-screen/)
+5. [KlipperScreen Installation Guide](https://www.obico.io/blog/klipper-screen/)
 
 Feel free to ask any questions or report issues in the [MakerFR forum](https://www.makerfr.com/forum/viewtopic.php?t=14710). Happy printing with your new touchscreen setup! 😊
