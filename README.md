@@ -41,6 +41,9 @@ So, I decided it was time to dive into something new and exciting. I wanted a cl
 | **BIGTREETECH CB1 Heatsink**                     | ~$5.50      | [BIGTREETECH CB1 Heatsink](https://biqu.equipment/products/manta-m4p-m8p?variant=39847241416802)                       |
 | **Optional:**                                    |             |                                                                                                                        |
 | **BIGTREETECH TFT35 SPI V2.1 Touch Screen**      | ~$24.00     | [BIGTREETECH TFT35 SPI V2.1 Touch Screen](https://biqu.equipment/collections/lcd-screen/products/bigtreetech-tft35-spi-v2-1-touchscreen-io2can-module) |
+| **Stylus for Touch Screen**                      | ~$1.10      | [Aliexpress Stylus](https://fr.aliexpress.com/item/1005006539716369.html?gatewayAdapt=glo2fra)                                                            |
+| **Neopixel LEDs (1m 74 IP30 or 1m 144 IP30)**                   | ~$5.00| [Aliexpress Neopixel LEDs](https://fr.aliexpress.com/item/1005006224130239.html?gatewayAdapt=glo2fra)                                                     |
+
 
 ### 3D Printed Parts
 
