@@ -63,10 +63,12 @@ This guide will walk you through installing and configuring Neopixel LEDs on you
 2. **Test LED Operation**: Use commands in the Klipper console to check if the LEDs are functioning correctly. Adjust the effects or configurations as needed.
 3. **Troubleshooting**: If the LEDs don’t light up or behave unexpectedly, double-check the wiring and ensure that the `leds.cfg` file is correctly configured.
 
+Happy printing with your glowing setup! 🌟
+
+**Optional: Go to [BTT TFT35 SPI installation](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Documentation/5_BTT_TFT35_Installation_Guide.md)**
+
 ## 📚 References
 1. [Klipper LED Effects Plugin Documentation](https://github.com/julianschill/klipper-led_effect)
 2. [BTT Manta M5P Documentation](https://github.com/bigtreetech/Manta-M5P)
 
-Happy printing with your glowing setup! 🌟
 
-**Optional: Go to [BTT TFT35 SPI installation](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Documentation/5_BTT_TFT35_Installation_Guide.md)**
