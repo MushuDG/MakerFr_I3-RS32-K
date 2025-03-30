@@ -63,6 +63,18 @@ In this documentation, I’ll guide you through the entire process—from hardwa
 
 **Go to [Wiring](https://github.com/MushuDG/MakerFr_I3-RS32-K/blob/main/Documentation/1_Wiring.md)**
 
+
+## 📜 License & Credits
+
+This project is released under the **GNU General Public License v3.0**.
+
+It includes modified code from the amazing project [Klipper Adaptive Meshing & Purging](https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging) by [@kyleisah](https://github.com/kyleisah), which is also licensed under **GPL-3.0**.
+
+> Portions of the original code were adapted to fit the needs of this build, particularly in the context of bed mesh management and purge routines for the MakerFr I3-RS32 running Klipper.
+
+Big kudos and thanks to Kyle for the original work and continued inspiration! 💜
+
+
 ---
 
 **References:**
